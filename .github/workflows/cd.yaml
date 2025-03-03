@@ -1,0 +1,19 @@
+name: CD
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
+jobs:
+  build:
+    if: github.event.pull_request.merged == true
+    name: Deploy AWS CDK Typescript Stack
+    runs-on: ubuntu-latest
+    steps:
+      - name: Initiated By User
+        run: echo $GITHUB_ACTOR
+
+      - name: Check Out Code
+        uses
